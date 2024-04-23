@@ -90,8 +90,10 @@ void cargar(Cliente *cliente, int numClientes)
 
 void mostrar(Cliente *cliente, int numClientes)
 {
+    float total;
     for (int i = 0; i < numClientes; i++)
     {
+        total = 0;
         printf("\nCliente %d", i + 1);
         printf("\nNombre: %s", (cliente + i)->NombreCliente);
         printf("\nNumero de productos a pedir: %d", (cliente + i)->CantidadProductosAPedir);
@@ -100,7 +102,9 @@ void mostrar(Cliente *cliente, int numClientes)
             printf("\nProducto %d: %s", (cliente + i)->Productos[j].ProductoID, (cliente + i)->Productos[j].TipoProducto);
             printf("\nCantidad: %d", (cliente + i)->Productos[j].Cantidad);
             printf("\nPrecio unitario: %.2f", (cliente + i)->Productos[j].PrecioUnitario);
+            total += (cliente + i)->Productos[j].Cantidad * (cliente + i)->Productos[j].PrecioUnitario;
         }
+        printf("\nTotal a pagar: %.2f", total);
         printf("\n\n");
     }
 }
